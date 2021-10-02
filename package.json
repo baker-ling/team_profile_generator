@@ -1,0 +1,26 @@
+{
+  "name": "team_profile_generator",
+  "version": "1.0.0",
+  "description": "A tool to generate static team profile webpages",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baker-ling/team_profile_generator.git"
+  },
+  "author": "Brian Baker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/baker-ling/team_profile_generator/issues"
+  },
+  "homepage": "https://github.com/baker-ling/team_profile_generator#readme",
+  "dependencies": {
+    "inquirer": "^8.1.5",
+    "jest": "^27.2.4"
+  }
+}
