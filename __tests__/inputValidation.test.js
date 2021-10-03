@@ -23,17 +23,16 @@ describe("validateEmployeeName", () => {
 });
 
 describe("validateId", () => {
-  it("should return true if the input has can be parsed to a non-negative integer", () => {
-    expect(inputValidation.validateId("0")).toStrictEqual(true);
-    expect(inputValidation.validateId("3241 a")).toStrictEqual(true);
+  it("should return true if the input is a non-negative integer", () => {
+    expect(inputValidation.validateId(0)).toStrictEqual(true);
+    expect(inputValidation.validateId(3241)).toStrictEqual(true);
   });
-  it("should not return true if the input cannot be parsed to a number", () => {
-    const input = "Blah";
-    expect(inputValidation.validateId(input)).not.toStrictEqual(true);
+  it("should not return true if the input is negative", () => {
+    expect(inputValidation.validateId(-1)).not.toStrictEqual(true);
   });
-  it("should not return true if the input parsed to a number is negative", () => {
-    const input = "-1";
-    expect(inputValidation.validateId(input)).not.toStrictEqual(true);
+  
+  it("should not return true if the input is not an integer", () => {
+    expect(inputValidation.validateId(1.5)).not.toStrictEqual(true);
   });
 });
 
