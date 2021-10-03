@@ -106,5 +106,5 @@ typings/
 .DS_Store/
 desktop.ini
 
-# output folder contents
-dist/*.*
+# output files
+dist/*.html

@@ -1,0 +1,5 @@
+This folder is where the program creates the HTML file output.
+
+Output files will be named 'index.html'.
+
+Running the program will overwrite any previous output files.
