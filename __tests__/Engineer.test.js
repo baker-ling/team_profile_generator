@@ -11,17 +11,24 @@ describe("Engineer", () => {
             const name = "John Doe";
             const id = 1;
             const email = "john.doe@fake.net";
-            const githubName = "gitName";
-            const engineer = new Engineer(name, id, email, githubName);
+            const github = "gitName";
+            const engineer = new Engineer(name, id, email, github);
             expect(engineer.name).toEqual(name);
             expect(engineer.id).toEqual(id);
             expect(engineer.email).toEqual(email);
-            expect(engineer.github).toEqual(githubName);
+            expect(engineer.github).toEqual(github);
         });
     });
 
     describe("getGithub", () => {
-        it
+        it("should return github username passed to the constructor", () => {
+            const name = "John Doe";
+            const id = 1;
+            const email = "john.doe@fake.net";
+            const github = "gitName";
+            const engineer = new Engineer(name, id, email, github);
+            expect(engineer.getGithub()).toEqual(github);
+        });
     });
 
     describe("getRole", () => {
