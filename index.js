@@ -11,6 +11,8 @@ let team = {
   employees: []
 };
 
+let highestIdEntered = 0;
+
 const trimString = str => str.trim();
 
 const initialQuestions = [
@@ -32,20 +34,21 @@ const initialQuestions = [
   {
     type: 'number',
     name: 'id',
-    message: answers => `${answers.name}'s Employee ID'`,
+    message: answers => `${answers.name}'s Employee ID`,
+    default: () => highestIdEntered + 1,
     validate: inputValidation.validateId
   },
   {
     type: 'input',
     name: 'email',
-    message: answers => `${answers.name}'s Email Address'`,
+    message: answers => `${answers.name}'s Email Address`,
     filter: trimString,
     validate: inputValidation.validateEmail
   },
   {
     type: 'input',
     name: 'officeNumber',
-    message: answers => `${answers.name}'s Office Number'`,
+    message: answers => `${answers.name}'s Office Number`,
     filter: trimString
   }
 ];
@@ -75,36 +78,37 @@ const employeeQuestions = [
   {
     type: 'number',
     name: 'id',
-    message: answers => `${answers.name}'s Employee ID'`,
+    message: answers => `${answers.name}'s Employee ID`,
+    default: () => highestIdEntered + 1,
     validate: inputValidation.validateId
   },
   {
     type: 'input',
     name: 'email',
-    message: answers => `${answers.name}'s Email Address'`,
+    message: answers => `${answers.name}'s Email Address`,
     filter: trimString,
     validate: inputValidation.validateEmail
   },
   {
     type: 'input',
     name: 'github',
-    message:  answers => `${answers.name}'s GitHub Account Name'`,
+    message:  answers => `${answers.name}'s GitHub Account Name`,
     filter: trimString,
     when: answers => answers.typeOfEmployee === 'Engineer'
   },
   {
     type: 'input',
     name: 'school',
-    message:  answers => `${answers.name}'s School's Name'`,
+    message:  answers => `${answers.name}'s School's Name`,
     filter: trimString,
     when: answers => answers.typeOfEmployee === 'Intern'
   }
 ];
 
 function promptToAddAnother() {
-  return inquirer.prompt(addAnotherQuestions).then(answers => {
+  inquirer.prompt(addAnotherQuestions).then(answers => {
     if (answers.addAnother) {
-      return promptForNextEmployee();
+      promptForNextEmployee();
     } else {
       createTeamHTMLFile(team);
     }
@@ -112,16 +116,17 @@ function promptToAddAnother() {
 }
 
 function promptForNextEmployee() {
-  return inquirer.prompt(addAnotherQuestions).then(answers => {
+  inquirer.prompt(employeeQuestions).then(answers => {
     let employee; 
     const {name, id, email, github, school} = answers;
-    if (answers.type === "Engineer") {
+    highestIdEntered = Math.max(id, highestIdEntered);
+    if (answers.typeOfEmployee === "Engineer") {
       employee = new Engineer(name, id, email, github);
     } else {
       employee = new Intern(name, id, email, school);
     }
     team.employees.push(employee);
-    return promptToAddAnother();
+    promptToAddAnother();
   });
 }
 
@@ -129,6 +134,8 @@ function promptForNextEmployee() {
 
 inquirer.prompt(initialQuestions).then(answers => {
   const {teamName, name, id, email, officeNumber } = answers;
+  highestIdEntered = id;
+
   team.name = teamName;
   team.employees.push(new Manager(name, id, email, officeNumber));
   promptToAddAnother();
