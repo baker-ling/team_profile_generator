@@ -107,4 +107,4 @@ typings/
 desktop.ini
 
 # output folder contents
-dist/*
+dist/*.*
