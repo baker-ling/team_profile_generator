@@ -107,5 +107,5 @@ dist
 .DS_Store/
 desktop.ini
 
-# output folder
-dist/
+# output folder contents
+dist/*
