@@ -18,7 +18,11 @@ You must have node installed to use this program.
 
 At the command line terminal of your choice type the following:
 
-```npm i https://github.com/baker-ling/team_profile_generator```
+```
+git clone https://github.com/baker-ling/team_profile_generator
+cd team_profile_generator
+npm install
+```
 
 ## Usage
 
