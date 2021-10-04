@@ -45,17 +45,21 @@ See the [samples](./samples) folder for examples of the output produced.
 - Email addresses must have an atmark (@) surrounded by at least one alphanumeric character on both sides.
 - Employee IDs must be non-negative integers.
 
+### Demo
+
+A video demo of the program is available [here](./screen_captures/demo.mp4).
+
 ## Tests
 
-Run `node test` to execute Jest unit tests.
+Run `npm test` to execute Jest unit tests.
 
 ## Questions
 
 If you have any questions, feel free to reach out via one of the following:
 
-- Email: [brian.devs.baker@gmail.com](mailto:brian.devs.baker@gmail.com)
-- Github: @baker-ling
+- Email: [brian.baker.bdb@gmail.com](mailto:brian.baker.bdb@gmail.com)
+- Github: [@baker-ling](https://github.com/baker-ling)
 
 ## License
 
-This application is distributed under the terms of [MIT License](./LICENSE).
+This application is distributed under the terms of the [MIT License](./LICENSE).
